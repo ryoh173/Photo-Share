@@ -10,12 +10,22 @@ class PhotosController < ApplicationController
   end
 
   def new
-    @photo = Photo.new
+   if params[:back]
+     @photo = Photo.new(photos_params)
+   else
+     @photo = Photo.new
+   end
   end
 
   def create
-     Photo.create(photos_params)
-     redirect_to photos_path, notice: "写真を投稿しました！"
+    @photo = Photo.new(photos_params)
+    # @photo.user_id = current_user.id
+    if @photo.save
+      redirect_to photos_path, notice: "写真を投稿しました！"
+      NoticeMailer.sendmail_photo(@photo).deliver
+    else
+      render 'new'
+    end
   end
 
   def edit
