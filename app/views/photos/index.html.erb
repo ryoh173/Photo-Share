@@ -1,0 +1,14 @@
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<h1>投稿写真一覧</h1>
+
+<% @photos.each do |photo| %>
+  <p>タイトル:<%= photo.title %></p>
+  <p>本文:<%= photo.content %></p>
+  <%= link_to "編集", edit_photo_path(photo.id) %>
+  <%= link_to '削除', photo_path(photo.id), data: { confirm: '本当に削除していいですか？' } , method: :delete %>
+<% end %>
+
+
+<%= link_to "投稿", new_photo_path %>
