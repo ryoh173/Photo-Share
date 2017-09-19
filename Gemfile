@@ -27,6 +27,17 @@ gem 'devise'
 
 gem 'twitter-bootstrap-rails'
 
+gem 'carrierwave'
+
+gem 'mini_magick'
+
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+
+gem 'rails_admin'
+
+gem 'cancan'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -47,6 +58,8 @@ group :development, :test do
   gem 'spring'
 
   gem 'letter_opener_web'
+
+  gem 'dotenv-rails'
 end
 
 gem 'rails_12factor', group: :production

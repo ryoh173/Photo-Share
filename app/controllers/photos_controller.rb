@@ -6,7 +6,8 @@ class PhotosController < ApplicationController
   end
 
   def index
-    @photos = Photo.all
+    @photos = Photo.all.includes(:user)
+    @users = User.all
   end
 
   def new
@@ -19,7 +20,7 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(photos_params)
-    # @photo.user_id = current_user.id
+    @photo.user_id = current_user.id
     if @photo.save
       redirect_to photos_path, notice: "写真を投稿しました！"
       NoticeMailer.sendmail_photo(@photo).deliver
@@ -29,6 +30,7 @@ class PhotosController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
@@ -43,7 +45,7 @@ class PhotosController < ApplicationController
 
   private
     def photos_params
-      params.require(:photo).permit(:title, :content)
+      params.require(:photo).permit(:title, :content, :photo)
     end
 
     def set_photo
