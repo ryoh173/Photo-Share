@@ -11,7 +11,7 @@
           <p><%= photo.content %></p>
           <p><%= image_tag photo.photo %></p>
           <br>
-          <%= profile_img(photo.user) %><p><%= photo.user.name %></p>
+          <!-- <%= profile_img(photo.user) %><p><%= photo.user.name %></p> -->
           <%= link_to "編集", edit_photo_path(photo.id), class: 'btn btn-default btn-sm btn-success' %>
           <%= link_to '削除', photo_path(photo.id), method: :delete, data: { confirm: '本当に削除していいですか？' }, class: 'btn btn-default btn-sm btn btn-danger' %>
         </div>
