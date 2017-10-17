@@ -22,3 +22,11 @@
     margin: 2em 0;
     padding: 2em;
 }
+
+ul {
+  list-style:none;
+}
+
+.error_explanation {
+  color: red;
+}
